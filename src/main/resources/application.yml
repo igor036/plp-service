@@ -1,6 +1,20 @@
 server:
     port: 8080
 
+
+spring:
+   datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:5432/plp_db
+    username: postgres
+    password: postgres
+
+flyway:
+   url: jdbc:postgresql://127.0.0.1:5432/plp_db
+   schemas: public
+   user: "postgres"
+   password: "postgres"
+
 correios:
     usuario: 'sigep'
     senha: 'n5f9t8'
@@ -12,3 +26,7 @@ correios:
     webservice_url: 'https://apphom.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl'
     target_package: 'com.olist.integration.correios.wsdl'
     
+
+#oracle cron expression documentation
+#https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm
+#exemplos (0 03 08 ? * *) = todo dia as 08:03, (0 00 00 ? * *) = todo dia a meia noite
