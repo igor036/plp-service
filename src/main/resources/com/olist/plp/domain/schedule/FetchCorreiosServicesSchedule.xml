@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <entry key="insertCorreiosServiceQuery">
+        INSERT INTO CORREIOS_SERVICE (
+            ID, 
+            ID_CORREIOS, 
+            CODE, 
+            DESCRIPTION, 
+            POSTAL_CODE
+        ) VALUES (?, ?, ?, ?, ?);
+    </entry>
+
+    <entry key="updateCorreiosServiceQuery">
+        UPDATE CORREIOS_SERVICE SET
+            CODE        = ?,
+            DESCRIPTION = ?,
+            POSTAL_CODE = ?,
+            UPDATED_AT  = (SELECT CURRENT_TIMESTAMP)
+        WHERE ID_CORREIOS = ?
+    </entry>
+
+    <entry key="isExistingCorreiosServiceQuery">
+        SELECT 
+            (CASE
+                WHEN EXISTS(SELECT 1 FROM CORREIOS_SERVICE WHERE ID_CORREIOS = ?) THEN 1
+                ELSE 0
+            END) AS EXIST;
+    </entry>
+    
+
+</properties>
