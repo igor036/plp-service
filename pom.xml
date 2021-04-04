@@ -87,6 +87,8 @@
 								<goal>generate</goal>
 							</goals>
 						</execution>
+
+						<!--
 						<execution>
 							<id>gen-test-schemas</id>
 							<phase>generate-test-sources</phase>
@@ -94,11 +96,12 @@
 								<goal>generate</goal>
 							</goals>
 							<configuration>
-								<generateDirectory>target/generated-test-sources/xjc</generateDirectory>
+								<generateDirectory>target/generated-test-sources/</generateDirectory>
 								<addTestCompileSourceRoot>true</addTestCompileSourceRoot>
 								<schemaDirectory>src/test/resources</schemaDirectory>
 							</configuration>
 						</execution>
+						-->
 					</executions>
 					<configuration>
 						<schemaLanguage>WSDL</schemaLanguage>

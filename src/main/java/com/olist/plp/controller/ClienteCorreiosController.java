@@ -1,6 +1,7 @@
 package com.olist.plp.controller;
 
 import com.olist.correios.wsdl.ClienteERP;
+import com.olist.correios.wsdl.StatusCartao;
 import com.olist.plp.service.ClienteCorreiosService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,4 +23,11 @@ public class ClienteCorreiosController {
         var cliente = clienteCorreiosService.getClienteCorreios();
         return ResponseEntity.status(HttpStatus.FOUND).body(cliente);
     }
+
+    @GetMapping("cartao-postagem/status")
+    public ResponseEntity<StatusCartao> getStatusCartaoPostagem() {
+        var statusCartao = clienteCorreiosService.getStatusCartaoPostagem();
+        return ResponseEntity.status(HttpStatus.FOUND).body(statusCartao);
+    }
 }
+

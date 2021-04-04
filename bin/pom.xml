@@ -14,7 +14,7 @@
 	<name>plp</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>14</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 
@@ -51,9 +51,9 @@
 
 	<profiles>
 		<profile>
-			<id>java14</id>
+			<id>java11</id>
 			<activation>
-				<jdk>[14,)</jdk>
+				<jdk>[11,)</jdk>
 			</activation>
 
 			<dependencies>
@@ -87,22 +87,10 @@
 								<goal>generate</goal>
 							</goals>
 						</execution>
-						<execution>
-							<id>gen-test-schemas</id>
-							<phase>generate-test-sources</phase>
-							<goals>
-								<goal>generate</goal>
-							</goals>
-							<configuration>
-								<generateDirectory>target/generated-test-sources/xjc</generateDirectory>
-								<addTestCompileSourceRoot>true</addTestCompileSourceRoot>
-								<schemaDirectory>src/test/resources</schemaDirectory>
-							</configuration>
-						</execution>
 					</executions>
 					<configuration>
 						<schemaLanguage>WSDL</schemaLanguage>
-						<generatePackage>com.olist.wsdl</generatePackage>
+						<generatePackage>com.olist.correios.wsdl</generatePackage>
 						<schemas>
 							<schema>
 								<url>https://apphom.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl</url>

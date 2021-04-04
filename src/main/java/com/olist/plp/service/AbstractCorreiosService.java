@@ -1,6 +1,7 @@
 package com.olist.plp.service;
 
 import com.olist.correios.wsdl.ObjectFactory;
+import com.olist.plp.component.CorreiosPropperties;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -14,6 +15,9 @@ public abstract class AbstractCorreiosService {
 
     @Autowired
     protected WebServiceTemplate correiosWebServiceTemplate;
+
+    @Autowired
+    protected CorreiosPropperties correiosPropperties;
 
     @Autowired
     protected Environment env;

@@ -1,0 +1,11 @@
+correios:
+    usuario: 'sigep'
+    senha: 'n5f9t8'
+    contrato: '9992157880'
+    cartao: '0067599079'
+    cnpj: '34028316000103'
+    codigo_administrativo: '17000190'
+    codigo_servico: '***'
+    webservice_url: 'https://apphom.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl'
+    target_package: 'com.olist.correios.wsdl'
+    
