@@ -1,12 +1,17 @@
 package com.olist.plp.service;
 
+import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 
 import com.olist.correios.wsdl.BuscaCliente;
 import com.olist.correios.wsdl.BuscaClienteResponse;
+import com.olist.correios.wsdl.BuscaServicos;
+import com.olist.correios.wsdl.BuscaServicosResponse;
 import com.olist.correios.wsdl.ClienteERP;
 import com.olist.correios.wsdl.GetStatusCartaoPostagem;
 import com.olist.correios.wsdl.GetStatusCartaoPostagemResponse;
+import com.olist.correios.wsdl.ServicoERP;
 import com.olist.correios.wsdl.StatusCartao;
 
 import org.springframework.stereotype.Service;
@@ -32,6 +37,15 @@ public class ClienteCorreiosService extends AbstractCorreiosService {
         return getStatusCartaoPostagemResponse.getValue().getReturn();
     }
 
+    public List<ServicoERP> getServicos() {
+
+        var buscaServicosRequest  = buildBuscaServicosRequest();
+        var buscaServicosResponse = this.<BuscaServicosResponse> 
+            callCorreiosWebServiceMethod(buscaServicosRequest);
+
+        return buscaServicosResponse.getValue().getReturn();
+    }
+
     private JAXBElement<BuscaCliente> buildBuscaClienteRequest() {
      
         var buscaCliente = new BuscaCliente();
@@ -55,4 +69,15 @@ public class ClienteCorreiosService extends AbstractCorreiosService {
         return correiosFactory.createGetStatusCartaoPostagem(getStatusCartaoPostagem);
     }
     
+    private JAXBElement<BuscaServicos> buildBuscaServicosRequest() {
+    
+        var buscaServicos = new BuscaServicos();
+
+        buscaServicos.setUsuario(correiosPropperties.getUsuario());
+        buscaServicos.setSenha(correiosPropperties.getSenha());
+        buscaServicos.setIdCartaoPostagem(correiosPropperties.getCartao());
+        buscaServicos.setIdContrato(correiosPropperties.getContrato());
+
+        return correiosFactory.createBuscaServicos(buscaServicos);
+    }
 }

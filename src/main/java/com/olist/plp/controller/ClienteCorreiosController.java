@@ -1,6 +1,9 @@
 package com.olist.plp.controller;
 
+import java.util.List;
+
 import com.olist.correios.wsdl.ClienteERP;
+import com.olist.correios.wsdl.ServicoERP;
 import com.olist.correios.wsdl.StatusCartao;
 import com.olist.plp.service.ClienteCorreiosService;
 
@@ -28,6 +31,12 @@ public class ClienteCorreiosController {
     public ResponseEntity<StatusCartao> getStatusCartaoPostagem() {
         var statusCartao = clienteCorreiosService.getStatusCartaoPostagem();
         return ResponseEntity.status(HttpStatus.FOUND).body(statusCartao);
+    }
+
+    @GetMapping("servicos")
+    public ResponseEntity<List<ServicoERP>> getServicos() {
+        var servicos = clienteCorreiosService.getServicos();
+        return ResponseEntity.status(HttpStatus.FOUND).body(servicos);
     }
 }
 
