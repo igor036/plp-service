@@ -1,6 +1,6 @@
-package com.olist.plp.config;
+package com.olist.plp.application.config;
 
-import com.olist.plp.component.CorreiosPropperties;
+import com.olist.plp.application.component.CorreiosPropperties;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

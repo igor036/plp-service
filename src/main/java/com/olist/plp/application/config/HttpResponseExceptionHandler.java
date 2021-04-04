@@ -1,7 +1,7 @@
-package com.olist.plp.config;
+package com.olist.plp.application.config;
 
-import com.olist.plp.exception.AbstractException;
-import com.olist.plp.exception.UnexpectedException;
+import com.olist.plp.application.exception.AbstractException;
+import com.olist.plp.application.exception.UnexpectedException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

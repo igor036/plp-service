@@ -7,5 +7,5 @@ correios:
     codigo_administrativo: '17000190'
     codigo_servico: '***'
     webservice_url: 'https://apphom.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl'
-    target_package: 'com.olist.correios.wsdl'
+    target_package: 'com.olist.integration.correios.wsdl'
     

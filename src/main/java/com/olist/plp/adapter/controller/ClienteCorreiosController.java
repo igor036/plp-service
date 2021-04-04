@@ -1,11 +1,11 @@
-package com.olist.plp.controller;
+package com.olist.plp.adapter.controller;
 
 import java.util.List;
 
-import com.olist.correios.wsdl.ClienteERP;
-import com.olist.correios.wsdl.ServicoERP;
-import com.olist.correios.wsdl.StatusCartao;
-import com.olist.plp.service.ClienteCorreiosService;
+import com.olist.integration.correios.wsdl.ClienteERP;
+import com.olist.integration.correios.wsdl.ServicoERP;
+import com.olist.integration.correios.wsdl.StatusCartao;
+import com.olist.plp.domain.service.ClienteCorreiosService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

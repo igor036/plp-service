@@ -1,4 +1,4 @@
-package com.olist.plp.exception;
+package com.olist.plp.application.exception;
 
 import org.springframework.http.HttpStatus;
 

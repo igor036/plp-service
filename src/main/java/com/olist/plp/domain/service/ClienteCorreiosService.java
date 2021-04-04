@@ -1,18 +1,18 @@
-package com.olist.plp.service;
+package com.olist.plp.domain.service;
 
 import java.util.List;
 
 import javax.xml.bind.JAXBElement;
 
-import com.olist.correios.wsdl.BuscaCliente;
-import com.olist.correios.wsdl.BuscaClienteResponse;
-import com.olist.correios.wsdl.BuscaServicos;
-import com.olist.correios.wsdl.BuscaServicosResponse;
-import com.olist.correios.wsdl.ClienteERP;
-import com.olist.correios.wsdl.GetStatusCartaoPostagem;
-import com.olist.correios.wsdl.GetStatusCartaoPostagemResponse;
-import com.olist.correios.wsdl.ServicoERP;
-import com.olist.correios.wsdl.StatusCartao;
+import com.olist.integration.correios.wsdl.BuscaCliente;
+import com.olist.integration.correios.wsdl.BuscaClienteResponse;
+import com.olist.integration.correios.wsdl.BuscaServicos;
+import com.olist.integration.correios.wsdl.BuscaServicosResponse;
+import com.olist.integration.correios.wsdl.ClienteERP;
+import com.olist.integration.correios.wsdl.GetStatusCartaoPostagem;
+import com.olist.integration.correios.wsdl.GetStatusCartaoPostagemResponse;
+import com.olist.integration.correios.wsdl.ServicoERP;
+import com.olist.integration.correios.wsdl.StatusCartao;
 
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
-package com.olist.plp.service;
+package com.olist.plp.domain.service;
 
-import com.olist.correios.wsdl.ObjectFactory;
-import com.olist.plp.component.CorreiosPropperties;
+import com.olist.integration.correios.wsdl.ObjectFactory;
+import com.olist.plp.application.component.CorreiosPropperties;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
