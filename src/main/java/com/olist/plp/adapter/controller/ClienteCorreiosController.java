@@ -5,7 +5,7 @@ import java.util.List;
 import com.olist.integration.correios.wsdl.ClienteERP;
 import com.olist.integration.correios.wsdl.ServicoERP;
 import com.olist.integration.correios.wsdl.StatusCartao;
-import com.olist.plp.domain.service.ClienteCorreiosService;
+import com.olist.plp.adapter.correios.CorreiosWebService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,23 +19,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClienteCorreiosController {
 
     @Autowired
-    private ClienteCorreiosService clienteCorreiosService;
+    private CorreiosWebService correiosWebService;
     
     @GetMapping
     public ResponseEntity<ClienteERP> getCliente() {
-        var cliente = clienteCorreiosService.getClienteCorreios();
+        var cliente = correiosWebService.getClienteCorreios();
         return ResponseEntity.status(HttpStatus.FOUND).body(cliente);
     }
 
     @GetMapping("cartao-postagem/status")
     public ResponseEntity<StatusCartao> getStatusCartaoPostagem() {
-        var statusCartao = clienteCorreiosService.getStatusCartaoPostagem();
+        var statusCartao = correiosWebService.getStatusCartaoPostagem();
         return ResponseEntity.status(HttpStatus.FOUND).body(statusCartao);
     }
 
     @GetMapping("servicos")
     public ResponseEntity<List<ServicoERP>> getServicos() {
-        var servicos = clienteCorreiosService.getServicos();
+        var servicos = correiosWebService.getServicos();
         return ResponseEntity.status(HttpStatus.FOUND).body(servicos);
     }
 }
