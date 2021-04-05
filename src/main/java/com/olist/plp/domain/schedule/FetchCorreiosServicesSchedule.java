@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @PropertySource("classpath:com/olist/plp/domain/schedule/FetchCorreiosServicesSchedule.xml")
 public class FetchCorreiosServicesSchedule extends AbstractShedule {
 
-    private static final String EVERY_MIDNIGHT = "0 54 11 ? * *";
+    private static final String EVERY_MIDNIGHT = "0 53 05 ? * *";
 
     private static final String LOG_CORREIOS_SERVICE_INSERT_COUNT = "Number of success insert a Correios service {}";
     private static final String LOG_CORREIOS_SERVICE_UPDATE_COUNT = "Number of success update a Correios service {}";
@@ -81,7 +81,7 @@ public class FetchCorreiosServicesSchedule extends AbstractShedule {
 
     private void insertCorreiosService(ServicoERP correiosService) {
         
-        var insertQuery  = env.getProperty("insertCorreiosServiceQuery");
+        var insertSql    = env.getProperty("insertCorreiosServiceSql");
         var id           = UUID.randomUUID().toString();
         var idCorreios   = String.valueOf(correiosService.getId());
         var code         = correiosService.getCodigo();
@@ -91,7 +91,7 @@ public class FetchCorreiosServicesSchedule extends AbstractShedule {
         log.info(INSERTING_INSERT_CORREIOS_SERVICE, idCorreios, code);
 
         try {
-            jdbcTemplate.update(insertQuery, id, idCorreios, code, description, postalCode);
+            jdbcTemplate.update(insertSql, id, idCorreios, code, description, postalCode);
             insertedCount++;
         } catch(DataAccessException ex) {
             insertErrorCount++;
@@ -101,7 +101,7 @@ public class FetchCorreiosServicesSchedule extends AbstractShedule {
 
     private void updateCorreiosService(ServicoERP correiosService) {
 
-        var updateQuery  = env.getProperty("updateCorreiosServiceQuery");
+        var updateSql    = env.getProperty("updateCorreiosServiceSql");
         var idCorreios   = String.valueOf(correiosService.getId());
         var code         = correiosService.getCodigo();
         var description  = correiosService.getDescricao();
@@ -110,7 +110,7 @@ public class FetchCorreiosServicesSchedule extends AbstractShedule {
         log.info(UPDATING_INSERT_CORREIOS_SERVICE, idCorreios, code);
 
         try {
-            jdbcTemplate.update(updateQuery,code, description, postalCode, idCorreios);
+            jdbcTemplate.update(updateSql, code, description, postalCode, idCorreios);
             updatedCount++;
         } catch(DataAccessException ex) {
             updateErrorCount++;
@@ -119,8 +119,8 @@ public class FetchCorreiosServicesSchedule extends AbstractShedule {
     }
 
     private boolean isExistingCorreiosService(String idCorreiosService) {
-        var query = env.getProperty("isExistingCorreiosServiceQuery");
-        var exist = jdbcTemplate.queryForObject(query, Boolean.class, idCorreiosService);
+        var sql   = env.getProperty("isExistingCorreiosServiceSql");
+        var exist = jdbcTemplate.queryForObject(sql, Boolean.class, idCorreiosService);
         return exist;
     }
 

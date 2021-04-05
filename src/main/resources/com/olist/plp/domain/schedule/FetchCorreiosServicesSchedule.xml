@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-    <entry key="insertCorreiosServiceQuery">
+    <entry key="insertCorreiosServiceSql">
         INSERT INTO CORREIOS_SERVICE (
             ID, 
             ID_CORREIOS, 
@@ -12,7 +12,7 @@
         ) VALUES (?, ?, ?, ?, ?);
     </entry>
 
-    <entry key="updateCorreiosServiceQuery">
+    <entry key="updateCorreiosServiceSql">
         UPDATE CORREIOS_SERVICE SET
             CODE        = ?,
             DESCRIPTION = ?,
@@ -21,7 +21,7 @@
         WHERE ID_CORREIOS = ?
     </entry>
 
-    <entry key="isExistingCorreiosServiceQuery">
+    <entry key="isExistingCorreiosServiceSql">
         SELECT 
             (CASE
                 WHEN EXISTS(SELECT 1 FROM CORREIOS_SERVICE WHERE ID_CORREIOS = ?) THEN 1
