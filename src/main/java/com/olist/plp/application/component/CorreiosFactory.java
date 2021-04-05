@@ -6,12 +6,15 @@ import com.olist.integration.correios.wsdl.BuscaCliente;
 import com.olist.integration.correios.wsdl.BuscaServicos;
 import com.olist.integration.correios.wsdl.GetStatusCartaoPostagem;
 import com.olist.integration.correios.wsdl.ObjectFactory;
+import com.olist.integration.correios.wsdl.SolicitaEtiquetas;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CorreiosFactory {
+
+    private static final String TIPO_DESTINATARIO_ETIQUETA = "C";
     
     private final ObjectFactory factory = new ObjectFactory();
 
@@ -42,7 +45,7 @@ public class CorreiosFactory {
     }
     
     public JAXBElement<BuscaServicos> buildBuscaServicosRequest() {
-    
+        
         var buscaServicos = new BuscaServicos();
 
         buscaServicos.setUsuario(properties.getUsuario());
@@ -51,5 +54,18 @@ public class CorreiosFactory {
         buscaServicos.setIdContrato(properties.getContrato());
 
         return factory.createBuscaServicos(buscaServicos);
+    }
+
+    public JAXBElement<SolicitaEtiquetas> buildSolicitarEtiquetas(String idServicoCorreios, int qtdEtiquetas) {
+
+        var solicitarEtiqueta = new SolicitaEtiquetas();
+        solicitarEtiqueta.setTipoDestinatario(TIPO_DESTINATARIO_ETIQUETA);
+        solicitarEtiqueta.setIdServico(Long.valueOf(idServicoCorreios));        
+        solicitarEtiqueta.setQtdEtiquetas(qtdEtiquetas);
+        solicitarEtiqueta.setIdentificador(properties.getCnpj());
+        solicitarEtiqueta.setUsuario(properties.getUsuario());
+        solicitarEtiqueta.setSenha(properties.getSenha());
+
+        return factory.createSolicitaEtiquetas(solicitarEtiqueta);
     }
 }
